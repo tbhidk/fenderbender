@@ -2,22 +2,8 @@
 <html><body>
 <?php
 
-$host = "localhost";
-
-$dbname = "id20277160_testfender001";
-// REPLACE with Database user
-$username = "id20277160_test";
-// REPLACE with Database user password
-$password = "H0wBoutTh!s!";
-
-// Create connection
-$conn = new mysqli($host, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
-$sql = "SELECT id, sensor, location, value1, value2, value3, reading_time FROM SensorData ORDER BY id DESC";
+require_once "connection.php";
+$sql = "SELECT id, sensor, location, sensor1, sensor2, sensor3, reading_time FROM sensordata ORDER BY id DESC";
 
 echo '<table cellspacing="5" cellpadding="5">
       <tr> 
@@ -33,11 +19,10 @@ echo '<table cellspacing="5" cellpadding="5">
 if ($result = $conn->query($sql)) {
     while ($row = $result->fetch_assoc()) {
         $row_id = $row["id"];
-        $row_sensor = $row["sensor"];
         $row_location = $row["location"];
-        $row_value1 = $row["value1"];
-        $row_value2 = $row["value2"]; 
-        $row_value3 = $row["value3"]; 
+        $row_sensor1 = $row["sensor1"];
+        $row_sensor2 = $row["sensor2"]; 
+        $row_sensor3 = $row["sensor3"]; 
         $row_reading_time = $row["reading_time"];
         // Uncomment to set timezone to - 1 hour (you can change 1 to any number)
         //$row_reading_time = date("Y-m-d H:i:s", strtotime("$row_reading_time - 1 hours"));
@@ -49,9 +34,9 @@ if ($result = $conn->query($sql)) {
                 <td>' . $row_id . '</td> 
                 <td>' . $row_sensor . '</td> 
                 <td>' . $row_location . '</td> 
-                <td>' . $row_value1 . '</td> 
-                <td>' . $row_value2 . '</td>
-                <td>' . $row_value3 . '</td> 
+                <td>' . $row_sensor1 . '</td> 
+                <td>' . $row_sensor2 . '</td>
+                <td>' . $row_sensor3 . '</td> 
                 <td>' . $row_reading_time . '</td> 
               </tr>';
     }

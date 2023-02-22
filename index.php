@@ -33,7 +33,7 @@
             background-color: pink;   
     }   
     .pagination a:hover:not(.active) {   
-        background-color: skyblue;   
+        background-color: gold;   
     }   
         </style>   
   </head>   
@@ -56,15 +56,15 @@
 
     $start_from = ($page - 1) * $per_page_record;
 
-    $query = "SELECT * FROM `SensorData` LIMIT $start_from, $per_page_record";
+    $query = "SELECT * FROM `sensordata` LIMIT $start_from, $per_page_record";
     $rs_result = mysqli_query($conn, $query);
     ?>    
   
     <div class="container">   
       <br>   
       <div>   
-        <h1>Pagination Simple Example</h1>   
-        <p>Sensor data described here.   
+        <h1>Ship berth history</h1>   
+        <p>Ship history described here.   
         </p>   
         <table class="table table-striped table-condensed    
                                           table-bordered">   
@@ -83,12 +83,11 @@
             while ($row = mysqli_fetch_array($rs_result)) {    
                   // Display each field of the records.    
             echo '<tr>';     
-            echo '<td>' . $row["no"] . '</td>';     
-            echo '<td>' . $row["sensor"] . '</td>';   
-            echo '<td>' . $row["location"] . '</td>';   
-            echo '<td>' . $row["value1"] . '</td>';       
-            echo '<td>' . $row["value2"] . '</td>';       
-            echo '<td>' . $row["value3"] . '</td>';       
+            echo '<td>' . $row["id"] . '</td>';    
+            echo '<td>' . $row["location"] . '</td>'; 
+            echo '<td>' . $row["sensor1"] . '</td>';       
+            echo '<td>' . $row["sensor2"] . '</td>';       
+            echo '<td>' . $row["sensor3"] . '</td>';       
             echo '</tr>';
                 };    
             ?>     
@@ -154,4 +153,4 @@
     }
   </script>  
   </body>   
-</html> 
+</html> git

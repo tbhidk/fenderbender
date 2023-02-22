@@ -1,27 +1,9 @@
 <?php
 
-/*
-  Rui Santos
-  Complete project details at https://RandomNerdTutorials.com/esp32-esp8266-mysql-database-php/
-  
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files.
-  
-  The above copyright notice and this permission notice shall be included in all
-  copies or substantial portions of the Software.
-*/
-
-$servername = "localhost";
-
-$dbname = "id20277160_testfender001";
-// REPLACE with Database user
-$username = "id20277160_test";
-// REPLACE with Database user password
-$password = "H0wBoutTh!s!";
+require_once "connection.php";
 
 // Keep this API Key value to be compatible with the ESP32 code provided in the project page. 
 // If you change this value, the ESP32 sketch needs to match
-$api_key_value = "TKuwrbo20wOYX";
 
 $api_key= $sensor = $location = $value1 = $value2 = $value3 = "";
 
@@ -41,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Connection failed: " . $conn->connect_error);
         } 
         
-        $sql = "INSERT INTO SensorData (sensor, location, value1, value2, value3)
+        $sql = "INSERT INTO sensordata (sensor, location, value1, value2, value3)
         VALUES ('" . $sensor . "', '" . $location . "', '" . $value1 . "', '" . $value2 . "', '" . $value3 . "')";
         
         if ($conn->query($sql) === TRUE) {
