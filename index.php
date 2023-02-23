@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <html>   
-  <head>   
+  <head>  
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <title>test</title>   
     <link rel="stylesheet"  
     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">   
@@ -65,17 +67,18 @@
       <div>   
         <h1>Ship berth history</h1>   
         <p>Ship history described here.   
-        </p>   
+        </p>
+        <div class="table-responsive"> 
         <table class="table table-striped table-condensed    
                                           table-bordered">   
           <thead>   
             <tr>   
               <th width="10%">No.</th>   
-              <th>Sensor</th>   
               <th>Location</th>   
               <th>Value 1</th>
               <th>Value 2</th>
               <th>Value 3</th>
+              <th width="1%">Available</th>
             </tr>   
           </thead>   
           <tbody>   
@@ -87,7 +90,8 @@
             echo '<td>' . $row["location"] . '</td>'; 
             echo '<td>' . $row["sensor1"] . '</td>';       
             echo '<td>' . $row["sensor2"] . '</td>';       
-            echo '<td>' . $row["sensor3"] . '</td>';       
+            echo '<td>' . $row["sensor3"] . '</td>';
+            echo '<td>' . $row["ship_available"] . '</td>';       
             echo '</tr>';
                 };    
             ?>     
@@ -153,4 +157,4 @@
     }
   </script>  
   </body>   
-</html> git
+</html>
