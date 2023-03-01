@@ -1,5 +1,28 @@
 <!DOCTYPE html>
-<html><body>
+<html>
+<head>  
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>berthing history</title>   
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/datatables.min.css">
+
+    <!--
+      <link rel="stylesheet"  
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     -->  
+
+  </head>
+  <body>
+  <h4>
+    <a href="./">Homepage</a>
+  <div id="test">
+    <ul class="nav nav-list">
+      <li><a href=index.php><i class="icon-home icon-white"></i> Home</a></li>
+      <li class="active"><a href="#"><i class="icon-book"></i> Data</a></li>
+      <li><a href="#"><i class="icon-pencil"></i> Applications</a></li>
+      <li><a href="#"><i class="i"></i> Misc</a></li>
+    </ul>
+    </div>
 <?php
 
 require_once "connection.php";

@@ -3,8 +3,14 @@
   <head>  
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <title>test</title>   
-    <link rel="stylesheet"  
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">   
+    
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/datatables.min.css">
+
+    <!--
+      <link rel="stylesheet"  
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     -->
     <style>   
     table {  
         border-collapse: collapse;  
@@ -40,7 +46,34 @@
         </style>   
   </head>   
   <body>
-      <p>Goto <a href=testData.php>data </a>directly</p>   
+    <div id="test">
+    <ul class="nav nav-list">
+      <li class="active"><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
+      <li><a href="#"><i class="icon-book"></i> Library</a></li>
+      <li><a href="#"><i class="icon-pencil"></i> Applications</a></li>
+      <li><a href="bsData.php"><i class="i"></i> Misc</a></li>
+    </ul>
+    </div>
+      <p>
+        <a class="btn btn-primary" href=testData.php>goto data directly</a>
+      </p> 
+      <button class="btn btn-large" type="button">Large button</button>
+      <p>
+  <button class="btn btn-large btn-primary" type="button">Large button</button>
+  <button class="btn btn-large" type="button">Large button</button>
+</p>
+<p>
+  <button class="btn btn-primary" type="button">Default button</button>
+  <button class="btn" type="button">Default button</button>
+</p>
+<p>
+  <button class="btn btn-small btn-primary" type="button">Small button</button>
+  <button class="btn btn-small" type="button">Small button</button>
+</p>
+<p>
+  <button class="btn btn-mini btn-primary" type="button">Mini button</button>
+  <button class="btn btn-mini" type="button">Mini button</button>
+</p> 
   <center>  
     <?php
     // Import the file where we defined the connection to Database.
@@ -66,35 +99,33 @@
       <br>   
       <div>   
         <h1>Ship berth history</h1>   
-        <p>Ship history described here.   
-        </p>
-        <div class="table-responsive"> 
-        <table class="table table-striped table-condensed    
-                                          table-bordered">   
-          <thead>   
-            <tr>   
-              <th width="10%">No.</th>   
-              <th>Location</th>   
-              <th>Value 1</th>
-              <th>Value 2</th>
-              <th>Value 3</th>
-              <th width="1%">Available</th>
-            </tr>   
-          </thead>   
-          <tbody>   
-        <?php     
-            while ($row = mysqli_fetch_array($rs_result)) {    
-                  // Display each field of the records.    
-            echo '<tr>';     
-            echo '<td>' . $row["id"] . '</td>';    
-            echo '<td>' . $row["location"] . '</td>'; 
-            echo '<td>' . $row["sensor1"] . '</td>';       
-            echo '<td>' . $row["sensor2"] . '</td>';       
-            echo '<td>' . $row["sensor3"] . '</td>';
-            echo '<td>' . $row["ship_available"] . '</td>';       
-            echo '</tr>';
-                };    
-            ?>     
+        <p>Here are the lists of ship that berthed here.</p>
+        <div class="table-responsive">
+          <table class="table table-striped table-condensed table-bordered miTable">
+            <thead>
+              <tr>   
+                <th width="10%">No.</th>   
+                <th>Location</th>   
+                <th>Value 1</th>
+                <th>Value 2</th>
+                <th>Value 3</th>
+                <th width="1%">Available</th>
+              </tr>   
+            </thead>
+            <tbody>
+              <?php
+              while ($row = mysqli_fetch_array($rs_result)) {
+                // Display each field of the records.
+                echo '<tr>';     
+                echo '<td>' . $row["id"] . '</td>';    
+                echo '<td>' . $row["location"] . '</td>'; 
+                echo '<td>' . $row["sensor1"] . '</td>';       
+                echo '<td>' . $row["sensor2"] . '</td>';       
+                echo '<td>' . $row["sensor3"] . '</td>';
+                echo '<td>' . $row["ship_available"] . '</td>';       
+                echo '</tr>';
+              };
+              ?>     
           </tbody>   
         </table> 
   
@@ -155,6 +186,12 @@
         page = ((page><?php echo $total_pages; ?>)?<?php echo $total_pages; ?>:((page<1)?1:page));   
         window.location.href = 'index1.php?page='+page;   
     }
-  </script>  
+  </script>
+  <script type="text/javascript" src="js/datatables.min.js"></script>
+  <script type="text/javascript">
+	$(document).ready(function(){
+		$('.miTable').DataTable();
+	});
+</script>
   </body>   
 </html>
